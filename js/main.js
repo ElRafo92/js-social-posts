@@ -158,12 +158,21 @@ for (let i = 0; i < addLike.length; i++) {
     const arrayPosts = posts[i];
 
     addLike[i].addEventListener('click', function() {
-        addLike[i].classList.add('like-button--liked');
+        
+        addLike[i].classList.toggle('like-button--liked');
+        console.log(addLike[i])
+
+        if (!addLike[i].classList.contains('like-button--liked') ) {
+        arrayPosts.likes = arrayPosts.likes - 1;
+        } else if (addLike[i].classList.contains('like-button--liked') ) {
+            arrayPosts.likes = arrayPosts.likes + 1;
+        }
         console.log(arrayPosts.likes)
         
-        arrayPosts.likes = arrayPosts.likes + 1;
         
+        if (!idLiked.includes(arrayPosts.id)) {
         idLiked.push(arrayPosts.id)
+        };
         console.log(idLiked)
     });
 

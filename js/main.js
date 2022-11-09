@@ -155,6 +155,7 @@ const addLike = document.querySelectorAll('.like-button');
 const addCount = document.querySelectorAll('.js-likes-counter');
 const likesDiv = document.querySelectorAll('.likes');
 let idLiked = [];
+
 for (let i = 0; i < addLike.length; i++) {
     const arrayPosts = posts[i];
 
@@ -165,8 +166,10 @@ for (let i = 0; i < addLike.length; i++) {
 
         if (!addLike[i].classList.contains('like-button--liked') ) {
         arrayPosts.likes = arrayPosts.likes - 1;
+        addCount[i].innerHTML = Number(addCount[i].innerHTML) - 1;
         } else if (addLike[i].classList.contains('like-button--liked') ) {
             arrayPosts.likes = arrayPosts.likes + 1;
+            addCount[i].innerHTML = Number(addCount[i].innerHTML) + 1;
         }
         console.log(arrayPosts.likes)
         

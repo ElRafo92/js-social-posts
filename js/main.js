@@ -141,7 +141,7 @@ for(let i = 0; i < posts.length; i++) {
                 likesCounter.innerHTML =`Piace a <b id="like-counter-1" class="js-likes-counter">${arrayPosts.likes}</b> persone`
                 likes.append(likesCounter);
 
-                    /*const jsLikesCounter = document.createElement("b");
+                  /*  const jsLikesCounter = document.createElement("b");
                     jsLikesCounter.classList.add('js-likes-counter');
                     jsLikesCounter.innerHTML = arrayPosts.likes;
                     likesCounter.append(jsLikesCounter);*/
@@ -151,10 +151,21 @@ for(let i = 0; i < posts.length; i++) {
 };
 
 const addLike = document.querySelectorAll('.like-button');
-
+const addCount = document.querySelectorAll('.js-likes-counter');
+const likesDiv = document.querySelectorAll('.likes');
+let idLiked = [];
 for (let i = 0; i < addLike.length; i++) {
-addLike[i].addEventListener('click', function() {
-    addLike[i].classList.add('like-button--liked');
-});
-}
-console.log(addLike)
+    const arrayPosts = posts[i];
+
+    addLike[i].addEventListener('click', function() {
+        addLike[i].classList.add('like-button--liked');
+        console.log(arrayPosts.likes)
+        
+        arrayPosts.likes = arrayPosts.likes + 1;
+        
+        idLiked.push(arrayPosts.id)
+        console.log(idLiked)
+    });
+
+};
+

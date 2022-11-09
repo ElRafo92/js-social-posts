@@ -59,7 +59,7 @@ const posts = [
 const postsList = document.querySelector('.posts-list');
 
 for(let i = 0; i < posts.length; i++) {
-    const listPosts = posts[i];
+    const arrayPosts = posts[i]
 
     const post = document.createElement("div");
     post.classList.add('post');
@@ -79,6 +79,7 @@ for(let i = 0; i < posts.length; i++) {
 
                     const profilePic = document.createElement("img");
                     profilePic.classList.add('profile-pic');
+                    profilePic.setAttribute('src', arrayPosts.author.image)
                     postMetaIcon.append(profilePic);
 
                 const postMetaData = document.createElement("div");
@@ -87,18 +88,18 @@ for(let i = 0; i < posts.length; i++) {
 
                     const postMetaAuthor = document.createElement("div");
                     postMetaAuthor.classList.add('post-meta__author');
-                    postMetaAuthor.innerHTML = 'author-name';
+                    postMetaAuthor.innerHTML = arrayPosts.author.name;
                     postMetaData.append(postMetaAuthor);
 
                     const postMetaTime = document.createElement("div");
                     postMetaTime.classList.add('post-meta__time');
-                    postMetaTime.innerHTML = 'time ago';
+                    postMetaTime.innerHTML = arrayPosts.created;
                     postMetaData.append(postMetaTime);
 //PARTE MAIN DEL POST
 
         const postText = document.createElement("div");
         postText.classList.add('post__text');
-        postText.innerHTML = 'lorem ipsum'
+        postText.innerHTML = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat omnis, distinctio iure error magnam laudantium.'
         post.append(postText);
 
         const postImage = document.createElement("div");
@@ -106,7 +107,7 @@ for(let i = 0; i < posts.length; i++) {
         post.append(postImage);
 
             const postPic = document.createElement("img");
-            //metti img nel src
+            postPic.setAttribute('src', arrayPosts.media)
             postImage.append(postPic);
 //PARTE FOOTER DEL POST
 
@@ -132,17 +133,19 @@ for(let i = 0; i < posts.length; i++) {
 
                         const likeBtnLabel = document.createElement("span");
                         likeBtnLabel.classList.add('like-button__label');
-                        likeBtnLabel.innerHTML = 'mi piace';
+                        likeBtnLabel.innerHTML = ' Mi Piace';
                         likeBtn.append(likeBtnLabel);
     
                 const likesCounter = document.createElement("div");
                 likesCounter.classList.add('likes__counter');
+                likesCounter.innerHTML =`Piace a <b id="like-counter-1" class="js-likes-counter">${arrayPosts.likes}</b> persone`
                 likes.append(likesCounter);
 
-                    const jsLikesCounter = document.createElement("b");
+                    /*const jsLikesCounter = document.createElement("b");
                     jsLikesCounter.classList.add('js-likes-counter');
-                    jsLikesCounter.innerHTML = 'Piace a'
-                    likesCounter.append(jsLikesCounter);
+                    jsLikesCounter.innerHTML = arrayPosts.likes;
+                    likesCounter.append(jsLikesCounter);*/
 
     postsList.append(post);
 }
+

@@ -59,7 +59,7 @@ const posts = [
 const postsList = document.querySelector('.posts-list');
 
 for(let i = 0; i < posts.length; i++) {
-    const arrayPosts = posts[i]
+    const arrayPosts = posts[i];
 
     const post = document.createElement("div");
     post.classList.add('post');
@@ -79,7 +79,7 @@ for(let i = 0; i < posts.length; i++) {
 
                     const profilePic = document.createElement("img");
                     profilePic.classList.add('profile-pic');
-                    profilePic.setAttribute('src', arrayPosts.author.image)
+                    profilePic.setAttribute('src', arrayPosts.author.image);
                     postMetaIcon.append(profilePic);
 
                 const postMetaData = document.createElement("div");
@@ -147,5 +147,14 @@ for(let i = 0; i < posts.length; i++) {
                     likesCounter.append(jsLikesCounter);*/
 
     postsList.append(post);
-}
+    
+};
 
+const addLike = document.querySelectorAll('.like-button');
+
+for (let i = 0; i < addLike.length; i++) {
+addLike[i].addEventListener('click', function() {
+    addLike[i].classList.add('like-button--liked');
+});
+}
+console.log(addLike)

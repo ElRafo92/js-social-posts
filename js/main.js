@@ -93,13 +93,13 @@ for(let i = 0; i < posts.length; i++) {
 
                     const postMetaTime = document.createElement("div");
                     postMetaTime.classList.add('post-meta__time');
-                    postMetaTime.innerHTML = arrayPosts.created;
+                    postMetaTime.innerHTML = new Date(arrayPosts.created).toLocaleDateString();
                     postMetaData.append(postMetaTime);
 //PARTE MAIN DEL POST
 
         const postText = document.createElement("div");
         postText.classList.add('post__text');
-        postText.innerHTML = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat omnis, distinctio iure error magnam laudantium.'
+        postText.innerHTML = arrayPosts.content;
         post.append(postText);
 
         const postImage = document.createElement("div");
@@ -125,6 +125,7 @@ for(let i = 0; i < posts.length; i++) {
 
                     const likeBtn = document.createElement("a");
                     likeBtn.classList.add('like-button', 'js-like-button');
+                    likeBtn.setAttribute('data-postid', arrayPosts.id);
                     likesCta.append(likeBtn);
 
                         const likeBtnIcon = document.createElement("i");
@@ -141,7 +142,7 @@ for(let i = 0; i < posts.length; i++) {
                 likesCounter.innerHTML =`Piace a <b id="like-counter-1" class="js-likes-counter">${arrayPosts.likes}</b> persone`
                 likes.append(likesCounter);
 
-                  /*  const jsLikesCounter = document.createElement("b");
+                  /*const jsLikesCounter = document.createElement("b");
                     jsLikesCounter.classList.add('js-likes-counter');
                     jsLikesCounter.innerHTML = arrayPosts.likes;
                     likesCounter.append(jsLikesCounter);*/
@@ -168,7 +169,6 @@ for (let i = 0; i < addLike.length; i++) {
             arrayPosts.likes = arrayPosts.likes + 1;
         }
         console.log(arrayPosts.likes)
-        
         
         if (!idLiked.includes(arrayPosts.id)) {
         idLiked.push(arrayPosts.id)
